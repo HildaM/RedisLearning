@@ -1,5 +1,5 @@
 spring:
   redis:
     host: (your host ip)
-    password: (your port)
+    password: (your password)
     port: 6379

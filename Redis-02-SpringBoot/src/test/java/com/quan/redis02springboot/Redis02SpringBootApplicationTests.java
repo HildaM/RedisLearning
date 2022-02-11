@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quan.redis02springboot.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
+import com.quan.redis02springboot.utils.RedisUtil;
 
 
 import java.util.List;
@@ -18,6 +18,9 @@ class Redis02SpringBootApplicationTests {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Test
     void contextLoads() {
@@ -44,6 +47,13 @@ class Redis02SpringBootApplicationTests {
         redisTemplate.opsForValue().set("user4", user);
 
         System.out.println(redisTemplate.opsForValue().get("user3"));
+    }
+
+
+    @Test
+    void testUtils() {
+        redisUtil.set("testUtils", "successTest!");
+        System.out.println(redisUtil.get("testUtils"));
     }
 
 }
